@@ -1,0 +1,42 @@
+{
+    "userSuccess": {
+
+      "username": "Admin",
+      "password": "admin123"
+    },
+
+    "userFail": {
+
+      "username": "Adminn",
+      "password": "admin123"
+    },
+
+    "passwordFail":{
+
+      "username": "Admin",
+      "password": "admin1234"
+    },
+
+    "userEmpty":{
+
+      "username": " ",
+      "password": " "
+    },
+
+    "personalDetails": {
+
+      "firstName": "Orange",
+      "middleName": "Juice",
+      "lastName": "Silva"
+    },
+
+    "employeeDetails":{
+
+    "employeeId": "employeed",
+    "otherId": "IDOther",
+    "driversLicenseDate": "NumberLicenseDrivers",
+    "licenseExpiryDate": "2025-11-11"
+    }
+
+
+  }
