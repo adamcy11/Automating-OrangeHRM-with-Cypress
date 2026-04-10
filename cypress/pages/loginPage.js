@@ -14,7 +14,7 @@ class loginPage {
 
 // Structure of the tests to be used
     accessLoginPage(){
-        cy.visit('/auth/login')
+        cy.visit('auth/login')
     }
     
     loginWithAnyUser(username, password){
@@ -25,10 +25,14 @@ class loginPage {
 
     checkAccessInvalid(){
         cy.get(this.selectorList().wrongCredentialAlert)
+        .should('be.visible')
+        .and('contain', 'Invalid credentials')
     }
 
     checkEmptyField(){
         cy.get(this.selectorList().empityFieldAlert)
+        .should('be.visible')
+        .and('contain', 'Required')
     }
 
 }
