@@ -28,7 +28,7 @@
 
     "employeeId": "employeed",
     "otherId": "IDOther",
-    "driversLicenseDate": "NumberLicenseDrivers",
+    "driversLicenseNumber": "NumberLicenseDrivers",
     "licenseExpiryDate": "2025-11-11"
     }
 
