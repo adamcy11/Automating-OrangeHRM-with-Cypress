@@ -3,9 +3,9 @@ import LoginPage from "../pages/loginPage"
 import DashboardPage from "../pages/dashboardPage"
 import MenuPage from "../pages/menuPage"
 import MyInfoPage from "../pages/myInfoPage"
+import Chance from "chance"
 
-const Chance = require('chance') 
-var chance = new Chance() //Read the chanceJS documentation for random data possibilities
+const chance = new Chance() //Read the chanceJS documentation for random data possibilities
 const menuPage = new MenuPage()
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
@@ -23,7 +23,7 @@ describe('User Test', () => {
     dashboardPage.checkDashboardPage()
     menuPage.accessMyInfo()
     myInfoPage.fillpersonalDetails(chance.first(), userData.personalDetails.middleName, chance.last()) // --------> example of using chanceJS
-    myInfoPage.fillEmployeeDetails(userData.employeeDetails.employeeId, userData.employeeDetails.otherId, userData.employeeDetails.driversLicenseDate, userData.employeeDetails.licenseExpiryDate)
+    myInfoPage.fillEmployeeDetails(userData.employeeDetails.employeeId, userData.employeeDetails.otherId, userData.employeeDetails.driversLicenseNumber, userData.employeeDetails.licenseExpiryDate)
     myInfoPage.fillStatus()
     myInfoPage.saveForm()
   })

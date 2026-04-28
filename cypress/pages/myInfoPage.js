@@ -5,19 +5,26 @@ class myInfoPage {
             firstNameField: "[name='firstName']",
             middleNameField: "[name='middleName']",
             lastNameField: "[name='lastName']",
-            genericField: ".oxd-input--active",
-            dateField: "[placeholder='yyyy-dd-mm']",
+            genericGroup: ".oxd-input-group",
             dateCloseField: ".--close",
-            genericComboBox: ".oxd-select-text",
-            firstItemComboBox: ".oxd-select-dropdown > :nth-child(27)",
-            secondItemComboBox: ".oxd-select-dropdown > :nth-child(3)",
             submitButton: "[type='submit']",
-            genericInput: ".oxd-radio-input"
         }
 
 
 
         return selectors
+    }
+
+    getFieldByLabel(labelName) {
+        return cy.contains(this.selectorList().genericGroup, labelName).find('input')
+    }
+
+    getComboByLabel(labelName) {
+        return cy.contains(this.selectorList().genericGroup, labelName).find('.oxd-select-text')
+    }
+
+    getRadioButtonByLabel(groupLabel, optionText) {
+        return cy.contains(this.selectorList().genericGroup, groupLabel).contains(optionText)
     }
 
     fillpersonalDetails(firstName, middleName, lastName) {
@@ -26,20 +33,20 @@ class myInfoPage {
         cy.get(this.selectorList().lastNameField).clear().type(lastName)
     }
 
-    fillEmployeeDetails(employeeId, otherId, driversLicenseDate, licenseExpiryDate) {
-        cy.get(this.selectorList().genericField).eq(3).clear().type(employeeId)
-        cy.get(this.selectorList().genericField).eq(4).clear().type(otherId)
-        cy.get(this.selectorList().genericField).eq(5).clear().type(driversLicenseDate)
-        cy.get(this.selectorList().genericField).eq(6).clear().type(licenseExpiryDate)
+    fillEmployeeDetails(employeeId, otherId, driversLicenseNumber, licenseExpiryDate) {
+        this.getFieldByLabel('Employee Id').clear().type(employeeId)
+        this.getFieldByLabel('Other Id').clear().type(otherId)
+        this.getFieldByLabel("Driver's License Number").clear().type(driversLicenseNumber)
+        this.getFieldByLabel('License Expiry Date').clear().type(licenseExpiryDate)
         cy.get(this.selectorList().dateCloseField).click()
     }
 
     fillStatus() {
-        cy.get(this.selectorList().genericComboBox).eq(0).click()
-        cy.get(this.selectorList().firstItemComboBox).click()
-        cy.get(this.selectorList().genericComboBox).eq(1).click()
-        cy.get(this.selectorList().secondItemComboBox).click()
-        cy.get(this.selectorList().genericInput).eq(1).click()
+        this.getComboByLabel('Nationality').click()
+        cy.get('.oxd-select-dropdown').contains('Brazilian').click()
+        this.getComboByLabel('Marital Status').click()
+        cy.get('.oxd-select-dropdown').contains('Married').click()
+        this.getRadioButtonByLabel('Gender', 'Male').click()
     }
 
     saveForm() {
@@ -52,12 +59,3 @@ class myInfoPage {
 }
 
 export default myInfoPage
-
-
-
-
-
-
-
-
-
