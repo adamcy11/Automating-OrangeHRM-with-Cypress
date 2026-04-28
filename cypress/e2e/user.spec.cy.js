@@ -19,7 +19,7 @@ describe('User Test', () => {
 
   it('User Info Update - Success', () => {
 
-    loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
+    loginPage.loginWithAnyUser(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
     dashboardPage.checkDashboardPage()
     menuPage.accessMyInfo()
     myInfoPage.fillpersonalDetails(chance.first(), userData.personalDetails.middleName, chance.last()) // --------> example of using chanceJS

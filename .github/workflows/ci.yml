@@ -30,6 +30,9 @@ jobs:
         with:
           install: false
           command: npm run cy:run
+        env:
+         CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+         CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
 
       - name: Upload Cypress artifacts
         if: always()
