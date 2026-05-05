@@ -1,4 +1,4 @@
-class forgotPasswordPage {
+class ForgotPasswordPage {
     selectorList() {
         const selectors = {
             forgotPasswordTitle: ".orangehrm-forgot-password-title",
@@ -20,4 +20,4 @@ class forgotPasswordPage {
     
 }
 
-export default forgotPasswordPage
+export default ForgotPasswordPage

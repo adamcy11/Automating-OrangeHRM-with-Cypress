@@ -1,8 +1,8 @@
 import userData from "../fixtures/userData.json"
-import LoginPage from "../pages/loginPage"
-import DashboardPage from "../pages/dashboardPage"
-import MenuPage from "../pages/menuPage"
-import MyInfoPage from "../pages/myInfoPage"
+import LoginPage from "../pages/LoginPage"
+import DashboardPage from "../pages/DashboardPage"
+import MenuPage from "../pages/MenuPage"
+import MyInfoPage from "../pages/MyInfoPage"
 import Chance from "chance"
 
 const chance = new Chance() //Read the chanceJS documentation for random data possibilities
@@ -14,17 +14,16 @@ const myInfoPage = new MyInfoPage()
 describe('User Test', () => {
 
    beforeEach(() => {
-    loginPage.accessLoginPage()  
+
+    cy.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
   })
 
   it('User Info Update - Success', () => {
 
-    loginPage.loginWithAnyUser(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
-    dashboardPage.checkDashboardPage()
     menuPage.accessMyInfo()
     myInfoPage.fillpersonalDetails(chance.first(), userData.personalDetails.middleName, chance.last()) // --------> example of using chanceJS
     myInfoPage.fillEmployeeDetails(userData.employeeDetails.employeeId, userData.employeeDetails.otherId, userData.employeeDetails.driversLicenseNumber, userData.employeeDetails.licenseExpiryDate)
-    myInfoPage.fillStatus()
+    myInfoPage.fillStatus(userData.statusDetails.nationality, userData.statusDetails.maritalStatus, userData.statusDetails.gender)
     myInfoPage.saveForm()
   })
 
