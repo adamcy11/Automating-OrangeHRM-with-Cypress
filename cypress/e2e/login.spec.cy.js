@@ -1,24 +1,26 @@
 import userData from "../fixtures/userData.json"
-import LoginPage from "../pages/loginPage"
-import DashboardPage from "../pages/dashboardPage"
+import LoginPage from "../pages/LoginPage"
+import DashboardPage from "../pages/DashboardPage"
 
 
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 
 
-describe('Login Page', () => {
+describe('Success scenarios', () => {
+
+  it('login-Success', () => {
+
+    cy.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
+  })
+
+})
+
+describe('Failure scenarios', () => {
 
   beforeEach(() => {
     loginPage.accessLoginPage()
   })
-
-  it('login-Sucsess', () => {
-
-    loginPage.loginWithAnyUser(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
-    dashboardPage.checkDashboardPage()
-  })
-
   it('password-Fail', () => {
 
     loginPage.loginWithAnyUser(userData.passwordFail.username, userData.passwordFail.password)

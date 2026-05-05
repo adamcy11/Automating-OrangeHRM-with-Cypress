@@ -1,5 +1,5 @@
-import LoginPage from "../pages/loginPage"
-import ForgotPasswordPage from "../pages/forgotPasswordPage"
+import LoginPage from "../pages/LoginPage"
+import ForgotPasswordPage from "../pages/ForgotPasswordPage"
 
 const loginPage = new LoginPage()
 const forgotPasswordPage = new ForgotPasswordPage()

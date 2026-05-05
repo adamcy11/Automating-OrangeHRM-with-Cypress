@@ -1,4 +1,4 @@
-class myInfoPage {
+class MyInfoPage {
 
     selectorList() {
         const selectors = {
@@ -8,10 +8,9 @@ class myInfoPage {
             genericGroup: ".oxd-input-group",
             dateCloseField: ".--close",
             submitButton: "[type='submit']",
+            successToast: ".oxd-toast",
+            toastClose: ".oxd-toast-close"
         }
-
-
-
         return selectors
     }
 
@@ -41,21 +40,22 @@ class myInfoPage {
         cy.get(this.selectorList().dateCloseField).click()
     }
 
-    fillStatus() {
+    fillStatus(nationality, maritalStatus, gender) {
         this.getComboByLabel('Nationality').click()
-        cy.get('.oxd-select-dropdown').contains('Brazilian').click()
+        cy.get('.oxd-select-dropdown').should('be.visible').contains(nationality).click()
         this.getComboByLabel('Marital Status').click()
-        cy.get('.oxd-select-dropdown').contains('Married').click()
-        this.getRadioButtonByLabel('Gender', 'Male').click()
+        cy.get('.oxd-select-dropdown').should('be.visible').contains(maritalStatus).click()
+        this.getRadioButtonByLabel('Gender', gender).click()
     }
 
     saveForm() {
-        cy.get(this.selectorList().submitButton).eq(0).click({ force: true })
-        cy.get('body').should('contain', 'Successfully Update')
-        cy.get('.oxd-toast-close')
+        cy.get(this.selectorList().submitButton).eq(0).scrollIntoView().click()
+        cy.get(this.selectorList().successToast).should('contain', 'Successfully Updated')
+        cy.get(this.selectorList().toastClose).click()
     }
+
 
 
 }
 
-export default myInfoPage
+export default MyInfoPage

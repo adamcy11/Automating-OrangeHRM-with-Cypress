@@ -1,4 +1,4 @@
-class menuPage {
+class MenuPage {
     selectorList() {
         const selectors = {
             myInfoButton: '[href="/web/index.php/pim/viewMyDetails"]'
@@ -14,4 +14,4 @@ class menuPage {
     }
 }
 
-export default menuPage
+export default MenuPage
