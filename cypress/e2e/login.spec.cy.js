@@ -7,39 +7,36 @@ const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 
 
-describe('Success scenarios', () => {
+describe('Login Page', () => {
 
-  it('login-Success', () => {
-
-    cy.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
+  it('should login with valid credentials', () => {
+    cy.loginPage(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
   })
 
-})
+  describe('Credential validations', () => {
 
-describe('Failure scenarios', () => {
+    beforeEach(() => {
+      loginPage.accessLoginPage()
+    })
 
-  beforeEach(() => {
-    loginPage.accessLoginPage()
-  })
-  it('password-Fail', () => {
+    it('should display error when incorrect password is provided', () => {
+      loginPage.loginWithAnyUser(userData.passwordFail.username, userData.passwordFail.password)
+      loginPage.checkAccessInvalid()
+    })
 
-    loginPage.loginWithAnyUser(userData.passwordFail.username, userData.passwordFail.password)
-    loginPage.checkAccessInvalid()
-  })
+    it('should display error when incorrect username is provided', () => {
+      loginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
+      loginPage.checkAccessInvalid()
+    })
 
-  it('user-Fail', () => {
+    it('should display validation when username field is empty', () => {
+      loginPage.loginWithAnyUser(userData.userEmpty.username, Cypress.env('PASSWORD'))
+      loginPage.checkEmptyField()
+    })
 
-    loginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
-    loginPage.checkAccessInvalid()
-  })
-
-  it('user-Empty', () => {
-    loginPage.loginWithAnyUser(userData.userEmpty.username, Cypress.env('PASSWORD'))
-    loginPage.checkEmptyField()
-  })
-
-  it('Password-Empty', () => {
-    loginPage.loginWithAnyUser(Cypress.env('USERNAME'), userData.userEmpty.password)
-    loginPage.checkEmptyField()
+    it('should display validation when password field is empty', () => {
+      loginPage.loginWithAnyUser(Cypress.env('USERNAME'), userData.userEmpty.password)
+      loginPage.checkEmptyField()
+    })
   })
 })

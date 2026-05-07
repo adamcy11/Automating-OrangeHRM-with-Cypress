@@ -15,13 +15,13 @@ describe('User Test', () => {
 
    beforeEach(() => {
 
-    cy.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
+    cy.loginPage(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
   })
 
-  it('User Info Update - Success', () => {
+  it('should update profile information successfully', () => {
 
     menuPage.accessMyInfo()
-    myInfoPage.fillpersonalDetails(chance.first(), userData.personalDetails.middleName, chance.last()) // --------> example of using chanceJS
+    myInfoPage.fillPersonalDetails(chance.first(), userData.personalDetails.middleName, chance.last()) // --------> example of using chanceJS
     myInfoPage.fillEmployeeDetails(userData.employeeDetails.employeeId, userData.employeeDetails.otherId, userData.employeeDetails.driversLicenseNumber, userData.employeeDetails.licenseExpiryDate)
     myInfoPage.fillStatus(userData.statusDetails.nationality, userData.statusDetails.maritalStatus, userData.statusDetails.gender)
     myInfoPage.saveForm()

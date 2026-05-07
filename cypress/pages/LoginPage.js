@@ -5,7 +5,8 @@ class LoginPage {
             passwordField: "[name='password']",
             loginButton: "[type='submit']",
             wrongCredentialAlert: "[role='alert']",
-            emptyFieldAlert: ".oxd-input-field-error-message"
+            emptyFieldAlert: ".oxd-input-field-error-message",
+            loginTitle: ".orangehrm-login-title"
         }
 
         return selectors // Returning selectors in Cypress ensures proper command chaining and maintains the asynchronous flow of tests.
@@ -15,6 +16,11 @@ class LoginPage {
     // Structure of the tests to be used
     accessLoginPage() {
         cy.visit('auth/login')
+    }
+
+    checkLoginPage() {
+        cy.location('pathname').should('equal', '/web/index.php/auth/login')
+        cy.get(this.selectorList().loginTitle).should('be.visible')
     }
 
     loginWithAnyUser(username, password) {
