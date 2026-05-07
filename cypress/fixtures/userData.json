@@ -15,9 +15,9 @@
     "middleName": "Juice"
   },
   "employeeDetails": {
-    "employeeId": "employeed",
-    "otherId": "IDOther",
-    "driversLicenseNumber": "NumberLicenseDrivers",
+    "employeeId": "EMP-001",
+    "otherId": "OTH-001",
+    "driversLicenseNumber": "DLN-123456",
     "licenseExpiryDate": "2027-11-11"
   },
   "statusDetails": {

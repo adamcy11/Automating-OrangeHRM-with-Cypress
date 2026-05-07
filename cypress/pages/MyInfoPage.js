@@ -26,7 +26,7 @@ class MyInfoPage {
         return cy.contains(this.selectorList().genericGroup, groupLabel).contains(optionText)
     }
 
-    fillpersonalDetails(firstName, middleName, lastName) {
+    fillPersonalDetails(firstName, middleName, lastName) {
         cy.get(this.selectorList().firstNameField).clear().type(firstName)
         cy.get(this.selectorList().middleNameField).clear().type(middleName)
         cy.get(this.selectorList().lastNameField).clear().type(lastName)
@@ -49,7 +49,7 @@ class MyInfoPage {
     }
 
     saveForm() {
-        cy.get(this.selectorList().submitButton).eq(0).scrollIntoView().click()
+        cy.contains('button', 'Save').scrollIntoView().click().scrollIntoView().click()
         cy.get(this.selectorList().successToast).should('contain', 'Successfully Updated')
         cy.get(this.selectorList().toastClose).click()
     }
