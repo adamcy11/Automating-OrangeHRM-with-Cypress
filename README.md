@@ -25,7 +25,7 @@ This is a learning project aimed at improving skills in automated testing with C
 - **Semantic Helpers** — `getFieldByLabel()`, `getComboByLabel()`, `getRadioButtonByLabel()` for resilient, label-based element lookup
 - **Fixture Pattern** — test data externalized in `userData.json`, decoupled from test logic
 - **Environment Variables** — credentials managed via `.env` locally and GitHub Secrets in CI, following 12-Factor App principles
-- **Custom Commands** — `cy.login()` encapsulates the full authentication flow, eliminating duplication across specs
+- **Custom Commands** — `cy.loginPage()` encapsulates the full authentication flow with `cy.session()` for session caching, eliminating duplication and reducing login overhead across specs
 - **Dynamic Data** — Chance.js generates realistic random data per execution to avoid collisions and simulate real-world usage
 
 ## Getting Started
@@ -90,7 +90,9 @@ cypress/
 - Login with empty password field
 
 **Forgot Password**
-- Navigate to forgot password page
+- Return to login page when cancel is clicked
+- Display validation when username field is empty
+- Send password reset link successfully
 
 **User Profile**
 - Update personal details, employee info, nationality, marital status, and gender
