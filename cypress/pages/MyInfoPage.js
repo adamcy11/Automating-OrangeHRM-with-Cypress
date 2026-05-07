@@ -49,7 +49,7 @@ class MyInfoPage {
     }
 
     saveForm() {
-        cy.contains('button', 'Save').scrollIntoView().click().scrollIntoView().click()
+        cy.contains('button', 'Save').scrollIntoView().click()
         cy.get(this.selectorList().successToast).should('contain', 'Successfully Updated')
         cy.get(this.selectorList().toastClose).click()
     }
