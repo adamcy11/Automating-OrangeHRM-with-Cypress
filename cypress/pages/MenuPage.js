@@ -1,16 +1,18 @@
 class MenuPage {
     selectorList() {
         const selectors = {
-            myInfoButton: '[href="/web/index.php/pim/viewMyDetails"]'
-
+            sidePanel: '[aria-label="Sidepanel"]'
         }
 
         return selectors
     }
 
     accessMyInfo() {
-        cy.get(this.selectorList().myInfoButton).click()
+        cy.get(this.selectorList().sidePanel).contains('My Info').click()
+    }
 
+    accessPim() {
+        cy.get(this.selectorList().sidePanel).contains('PIM').click()
     }
 }
 

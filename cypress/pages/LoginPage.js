@@ -9,11 +9,10 @@ class LoginPage {
             loginTitle: ".orangehrm-login-title"
         }
 
-        return selectors // Returning selectors in Cypress ensures proper command chaining and maintains the asynchronous flow of tests.
-
+        return selectors 
     }
 
-    // Structure of the tests to be used
+    
     accessLoginPage() {
         cy.visit('auth/login')
     }
@@ -46,4 +45,4 @@ class LoginPage {
     }
 
 }
-export default LoginPage // allows you to import and reuse login logic in other files.
+export default LoginPage 
