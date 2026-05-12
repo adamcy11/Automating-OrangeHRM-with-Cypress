@@ -12,6 +12,10 @@ class DashboardPage {
         cy.get(this.selectorList().dashboardGrid).should('be.visible')
     }
 
+    accessDashboardPage() {
+        cy.visit('dashboard/index')
+    }
+
 }
 
 export default DashboardPage

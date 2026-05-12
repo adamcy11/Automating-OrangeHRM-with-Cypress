@@ -26,5 +26,4 @@ describe('User Test', () => {
     myInfoPage.fillStatus(userData.statusDetails.nationality, userData.statusDetails.maritalStatus, userData.statusDetails.gender)
     myInfoPage.saveForm()
   })
-
 })

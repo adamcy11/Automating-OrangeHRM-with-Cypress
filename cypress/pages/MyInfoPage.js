@@ -53,9 +53,6 @@ class MyInfoPage {
         cy.get(this.selectorList().successToast).should('contain', 'Successfully Updated')
         cy.get(this.selectorList().toastClose).click()
     }
-
-
-
 }
 
 export default MyInfoPage

@@ -5,7 +5,7 @@ import userData from "../fixtures/userData.json"
 const loginPage = new LoginPage()
 const forgotPasswordPage = new ForgotPasswordPage()
 
-describe('Forgot Password Actions', () => {
+describe('Forgot Password Test', () => {
 
   beforeEach(() => {
     loginPage.accessLoginPage()
