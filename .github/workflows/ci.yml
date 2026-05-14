@@ -39,7 +39,6 @@ jobs:
         with:
           install: false
           browser: ${{ matrix.browser }}
-          command: npm run cy:run
         env:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
