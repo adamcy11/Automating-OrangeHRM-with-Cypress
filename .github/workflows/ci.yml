@@ -13,6 +13,10 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome, firefox, edge]
 
     steps:
       - name: Checkout
@@ -34,6 +38,7 @@ jobs:
         uses: cypress-io/github-action@v7
         with:
           install: false
+          browser: ${{ matrix.browser }}
           command: npm run cy:run
         env:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
@@ -43,13 +48,13 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mochawesome-report
+          name: mochawesome-report-${{ matrix.browser }}
           path: cypress/reports/html
           if-no-files-found: ignore
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && matrix.browser == 'chrome'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: cypress/reports/html
