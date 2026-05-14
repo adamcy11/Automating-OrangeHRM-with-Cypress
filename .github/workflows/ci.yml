@@ -37,12 +37,18 @@ jobs:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
 
-      - name: Upload Cypress artifacts
+      - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-artifacts
-          path: |
-            cypress/screenshots
-            cypress/videos
+          name: mochawesome-report
+          path: cypress/reports/html
           if-no-files-found: ignore
+
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: cypress/reports/html
+          publish_branch: gh-pages

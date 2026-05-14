@@ -9,11 +9,13 @@
   "author": "Arthur Adamcy de Souza",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "chance": "1.1.12"
+  "engines": {
+    "node": ">=20"
   },
   "devDependencies": {
+    "chance": "1.1.13",
     "cypress": "14.3.0",
+    "cypress-mochawesome-reporter": "4.0.2",
     "dotenv": "17.4.2"
   }
 }
