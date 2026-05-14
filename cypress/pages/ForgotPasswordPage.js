@@ -18,7 +18,9 @@ class ForgotPasswordPage {
 
     checkForgotPasswordPage() {
         cy.location('pathname').should('equal', '/web/index.php/auth/requestPasswordResetCode')
-        cy.get(this.selectorList().forgotPasswordTitle).should('be.visible')
+        cy.get(this.selectorList().forgotPasswordTitle)
+            .should('be.visible')
+            .and('contain', 'Reset Password')
     }
 
     submitResetPassword(username) {

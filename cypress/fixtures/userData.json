@@ -24,5 +24,13 @@
     "nationality": "Brazilian",
     "maritalStatus": "Married",
     "gender": "Male"
+  },
+  "newEmployee": {
+    "password": "Admin@1234",
+    "usernameRepeat": "Admin",
+    "firstNameEmpty": "",
+    "lastNameEmpty": "",
+    "usernameEmpty": "",
+    "passwordEmpty": ""
   }
 }
