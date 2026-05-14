@@ -1,7 +1,7 @@
 # OrangeHRM — E2E Test Automation with Cypress
 
 <a href="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login">
-  <img src=".github/images/orangehrm-preview.png" alt="OrangeHRM Demo" width="800"/>
+  <img src="images/orangehrm-preview.png" alt="OrangeHRM Demo" width="800"/>
 </a>
 
 This project automates core user flows of the **OrangeHRM** system using the **Cypress** framework. It covers authentication, profile management, and employee management scenarios through end-to-end tests with a clean and well-organized architecture.
