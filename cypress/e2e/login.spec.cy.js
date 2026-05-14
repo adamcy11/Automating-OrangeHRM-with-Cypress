@@ -1,11 +1,7 @@
 import userData from "../fixtures/userData.json"
 import LoginPage from "../pages/LoginPage"
 
-
-
 const loginPage = new LoginPage()
-
-
 
 describe('Login Page', () => {
 

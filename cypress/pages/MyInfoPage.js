@@ -7,11 +7,18 @@ class MyInfoPage {
             lastNameField: "[name='lastName']",
             genericGroup: ".oxd-input-group",
             dateCloseField: ".--close",
-            submitButton: "[type='submit']",
             successToast: ".oxd-toast",
-            toastClose: ".oxd-toast-close"
+            toastClose: ".oxd-toast-close",
+            personalTitle: ".orangehrm-main-title"
         }
         return selectors
+    }
+
+    checkMyInfoPage() {
+        cy.location('pathname').should('include', '/pim/viewPersonalDetails')
+        cy.get(this.selectorList().personalTitle)
+            .should('be.visible')
+            .and('contain', 'Personal Details')
     }
 
     getFieldByLabel(labelName) {

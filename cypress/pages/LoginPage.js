@@ -9,17 +9,19 @@ class LoginPage {
             loginTitle: ".orangehrm-login-title"
         }
 
-        return selectors 
+        return selectors
     }
 
-    
+
     accessLoginPage() {
         cy.visit('auth/login')
     }
 
     checkLoginPage() {
         cy.location('pathname').should('equal', '/web/index.php/auth/login')
-        cy.get(this.selectorList().loginTitle).should('be.visible')
+        cy.get(this.selectorList().loginTitle)
+            .should('be.visible')
+            .and('contain', 'Login')
     }
 
     loginWithAnyUser(username, password) {
@@ -43,6 +45,5 @@ class LoginPage {
             .should('be.visible')
             .and('contain', 'Required')
     }
-
 }
 export default LoginPage 
